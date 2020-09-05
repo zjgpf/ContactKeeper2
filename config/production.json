@@ -1,0 +1,4 @@
+{
+  "mongoURI":"mongodb+srv://gpf:gpf@contactkeeper.etal2.mongodb.net/ContactKeeper_db1?retryWrites=true&w=majority",
+  "jwtSecret": "secret"
+}
