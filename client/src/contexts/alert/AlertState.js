@@ -15,7 +15,7 @@ const AlertState = props => {
 
   const addAlert = ({ msg, bg, ms }) => {
     const id = v4();
-    if (!ms) ms = 3000;
+    if (!ms) ms = 1000;
     dispatch( {type: ADD_ALERT, payload: { id, msg, bg } } );
     setTimeout(() => dispatch({type: REMOVE_ALERT, payload: id }), ms);
   };

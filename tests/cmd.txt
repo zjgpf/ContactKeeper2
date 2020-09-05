@@ -1,4 +1,16 @@
 {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWY1MjBmZGFmZjE0YTQyOGFmMTVkYjZhIn0sImlhdCI6MTU5OTIxMzUzMCwiZXhwIjoxOTU5MjEzNTMwfQ.TzGZEbZdgopT2kfa1kJDIo5DLsKC4x57D7jBTU_B444"}
+
 curl -d '{"name":"test1","email":"test1@gmail.com","password":"123456"}' -H "Content-Type:application/json" -X POST http://localhost:5000/api/register
+
 curl -H "x-auth-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWY1MjBmZGFmZjE0YTQyOGFmMTVkYjZhIn0sImlhdCI6MTU5OTIxMzUzMCwiZXhwIjoxOTU5MjEzNTMwfQ.TzGZEbZdgopT2kfa1kJDIo5DLsKC4x57D7jBTU_B444"  http://localhost:5000/api/auth
+
 curl -d '{"email":"test1@gmail.com","password":"123456"}' -H "Content-Type:application/json" -X POST http://localhost:5000/api/auth
+
+
+curl -d '{"name":"name1","email":"name1@gmail.com","phone":"1-11-111","type":"personal"}'  -H "Content-Type:application/json"  -H "x-auth-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWY1MjBmZGFmZjE0YTQyOGFmMTVkYjZhIn0sImlhdCI6MTU5OTIxMzUzMCwiZXhwIjoxOTU5MjEzNTMwfQ.TzGZEbZdgopT2kfa1kJDIo5DLsKC4x57D7jBTU_B444"  -X POST http://localhost:5000/api/contacts
+
+curl -H "x-auth-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWY1MjBmZGFmZjE0YTQyOGFmMTVkYjZhIn0sImlhdCI6MTU5OTIxMzUzMCwiZXhwIjoxOTU5MjEzNTMwfQ.TzGZEbZdgopT2kfa1kJDIo5DLsKC4x57D7jBTU_B444" http://localhost:5000/api/contacts
+
+curl -H "x-auth-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWY1MjBmZGFmZjE0YTQyOGFmMTVkYjZhIn0sImlhdCI6MTU5OTIxMzUzMCwiZXhwIjoxOTU5MjEzNTMwfQ.TzGZEbZdgopT2kfa1kJDIo5DLsKC4x57D7jBTU_B444" -X DELETE http://localhost:5000/api/contacts/5f53476c7812a02804a10ec6
+
+curl -d '{"name":"test2","email":"test2@gmail.com","phone":"123459"}' -H "Content-Type:application/json" -H "x-auth-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWY1MjBmZGFmZjE0YTQyOGFmMTVkYjZhIn0sImlhdCI6MTU5OTIxMzUzMCwiZXhwIjoxOTU5MjEzNTMwfQ.TzGZEbZdgopT2kfa1kJDIo5DLsKC4x57D7jBTU_B444" -X PUT http://localhost:5000/api/contacts/5f533db9e2ce0f2429fa29a4

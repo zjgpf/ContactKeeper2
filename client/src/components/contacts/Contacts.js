@@ -1,12 +1,15 @@
 import React, { useContext, useEffect } from 'react';
 import ContactItem from './ContactItem';
 import ContactContext from '../../contexts/contact/contactContext';
+import AuthContext from '../../contexts/auth/authContext';
 import Spinner from '../layouts/Spinner';
 
 const Contacts = ()=> {
   const contactContext = useContext(ContactContext);
+  const authContext = useContext(AuthContext);
   const { contacts, loading, filtedContacts } = contactContext; 
-  useEffect( () => {contactContext.getContacts()}, []);
+  const { token } = authContext;
+  useEffect( () => {contactContext.getContacts(token)}, []);
   if (loading) return <Spinner />;
   const onChange = e=> {
     const text = e.target.value.trim();

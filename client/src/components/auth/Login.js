@@ -19,7 +19,9 @@ const Login = props => {
 
   useEffect( ()=>
     {
-      if (token) loadUser();
+      let _token = null;
+      if (!token) _token = localStorage.getItem('token');
+      if (token || _token) loadUser();
       if (isLogining) {
         alertContext.addAlert({msg: 'Loading...', bg: 'bg-gray-800', ms: 1000});
       }

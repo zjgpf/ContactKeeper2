@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react'; 
 import ContactContext from '../../contexts/contact/contactContext';
 import AlertContext from '../../contexts/alert/alertContext';
+import AuthContext from '../../contexts/auth/authContext';
 
 const ContactForm = () => {
   const [contact, setContact] = useState(
@@ -14,7 +15,9 @@ const ContactForm = () => {
   const { name, email, phone, type } = contact;
   const contactContext = useContext(ContactContext);
   const alertContext = useContext(AlertContext);
+  const authContext = useContext(AuthContext);
   const { current } = contactContext;
+  const { token } = authContext;
   useEffect(()=>{
     if (current) setContact(current);
     else setContact({
@@ -28,11 +31,11 @@ const ContactForm = () => {
   const onSubmit = e => {
     e.preventDefault();
     if (current === null) {
-      contactContext.addContact(contact);
+      contactContext.addContact(contact, token);
       alertContext.addAlert({msg:'Add contact', bg:'bg-green-800'});
       setContact({name:'',email:'',phone:'',type:'personal'});
     } else {
-      contactContext.updateContact(contact);
+      contactContext.updateContact(contact, token);
       alertContext.addAlert({msg:'Edit contact', bg:'bg-blue-800'});
       setContact({name:'',email:'',phone:'',type:'personal'});
     }

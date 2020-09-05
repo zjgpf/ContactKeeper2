@@ -13,8 +13,6 @@ import {
   REGISTER
 } from '../types';
 
-const sleep = ms => new Promise( res => setTimeout(res, ms));
-
 const AuthState = props => {
 
   const initState = {
@@ -44,6 +42,7 @@ const AuthState = props => {
       const _data = await fetch('/api/auth', config); 
       const data = await _data.json();
       if (data.token) {
+        localStorage.setItem('token', data.token);
         dispatch({type: LOGIN_PRE_AUTH, payload: data.token});
       }
       else if (data.msg) {
@@ -56,6 +55,7 @@ const AuthState = props => {
   };
 
   const logout = () => {
+    localStorage.removeItem('token');
     dispatch( { type: LOGOUT } );
   };
 
@@ -72,6 +72,7 @@ const AuthState = props => {
       const _data = await fetch('/api/register', config); 
       const data = await _data.json();
       if (data.token) {
+        localStorage.setItem('token', data.token);
         dispatch({type: REGISTER_SUCCESS, payload: data.token});
       }
       else if (data.msg) {
@@ -84,7 +85,8 @@ const AuthState = props => {
   }
 
   const loadUser = async () => {
-    const { token } = state;
+    let { token } = state;
+    if (!token) token = localStorage.getItem('token');
     if (!token) dispatch({type: LOGIN_FAIL, msg: 'Authenticated Failed - No Token'});
     const config = {
       headers: {
@@ -94,7 +96,7 @@ const AuthState = props => {
     try {
       const _data = await fetch('/api/auth', config);
       const data = await _data.json();
-      dispatch({type: LOGIN_SUCCESS, payload: data});
+      dispatch({type: LOGIN_SUCCESS, payload: {user: data, token: token}});
     }
     catch (err) {
       dispatch({type: LOGIN_FAIL, msg: 'Authenticated Failed'});

@@ -1,16 +1,19 @@
 import React, { useContext } from 'react';
 import ContactContext from '../../contexts/contact/contactContext';
 import AlertContext from '../../contexts/alert/alertContext';
+import AuthContext from '../../contexts/auth/authContext';
 
 const ContactItem = ({contact}) => {
   const { _id, name, type, email, phone } = contact; 
   const contactContext = useContext(ContactContext);
   const alertContext = useContext(AlertContext);
+  const authContext = useContext(AuthContext);
+  const { token } = authContext;
   const onEdit = ()=> {
     contactContext.setCurrent(contact); 
   };
   const onDelete = ()=> {
-    contactContext.deleteContact(_id);
+    contactContext.deleteContact(_id, token);
     alertContext.addAlert({msg:'Delete contact...', bg:'bg-blue-800'});
   };
   return (

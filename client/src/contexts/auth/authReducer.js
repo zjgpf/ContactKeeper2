@@ -22,7 +22,7 @@ export default ( state, action ) => {
     case LOGIN_PRE:
       return { ...state, isLogining: true };
     case LOGIN_SUCCESS:
-      return { ...state, user: action.payload, isAuthenticated: true, msg: null, isLogining: false };
+      return { ...state, user: action.payload.user, token: action.payload.token, isAuthenticated: true, msg: null, isLogining: false };
     case LOGIN_FAIL:
       return { ...state, user: null, isAuthenticated: false, msg: action.payload, isLogining: false };
     case LOGOUT:
