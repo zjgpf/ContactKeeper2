@@ -1,5 +1,5 @@
 import {
-  ACTION_PRE,
+  CONTACT_ACTION_PRE,
   GET_CONTACTS,
   ADD_CONTACT,
   DELETE_CONTACT,
@@ -11,7 +11,7 @@ import {
 
 export default ( state, action ) => {
   switch( action.type ) {
-    case ACTION_PRE:
+    case CONTACT_ACTION_PRE:
       return { ...state, loading: true };
     case GET_CONTACTS:
       return { ...state, contacts: action.payload, loading: false };

@@ -1,0 +1,4 @@
+{"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWY1MjBmZGFmZjE0YTQyOGFmMTVkYjZhIn0sImlhdCI6MTU5OTIxMzUzMCwiZXhwIjoxOTU5MjEzNTMwfQ.TzGZEbZdgopT2kfa1kJDIo5DLsKC4x57D7jBTU_B444"}
+curl -d '{"name":"test1","email":"test1@gmail.com","password":"123456"}' -H "Content-Type:application/json" -X POST http://localhost:5000/api/register
+curl -H "x-auth-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWY1MjBmZGFmZjE0YTQyOGFmMTVkYjZhIn0sImlhdCI6MTU5OTIxMzUzMCwiZXhwIjoxOTU5MjEzNTMwfQ.TzGZEbZdgopT2kfa1kJDIo5DLsKC4x57D7jBTU_B444"  http://localhost:5000/api/auth
+curl -d '{"email":"test1@gmail.com","password":"123456"}' -H "Content-Type:application/json" -X POST http://localhost:5000/api/auth

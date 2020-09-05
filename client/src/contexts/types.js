@@ -1,6 +1,11 @@
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAIL = 'LOGIN_FAIL';
-export const ACTION_PRE = 'ACTION_PRE';
+export const LOGIN_PRE = 'LOGIN_PRE';
+export const LOGIN_PRE_AUTH = 'LOGIN_PRE_AUTH';
+export const REGISTER_PRE = 'REGISTER_PRE';
+export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
+export const REGISTER_FAIL = 'REGISTER_FAIL';
+export const CONTACT_ACTION_PRE = 'CONTACT_ACTION_PRE';
 export const ADD_ALERT = 'ADD_ALERT';
 export const REMOVE_ALERT = 'REMOVE_ALERT';
 export const LOGOUT = 'LOGOUT';

@@ -13,10 +13,11 @@ const AlertState = props => {
 
   const [ state, dispatch ] = useReducer(AlertReducer, initState);
 
-  const addAlert = ({ msg, bg }) => {
+  const addAlert = ({ msg, bg, ms }) => {
     const id = v4();
+    if (!ms) ms = 3000;
     dispatch( {type: ADD_ALERT, payload: { id, msg, bg } } );
-    setTimeout(() => dispatch({type: REMOVE_ALERT, payload: id }), 3000);
+    setTimeout(() => dispatch({type: REMOVE_ALERT, payload: id }), ms);
   };
 
   return (

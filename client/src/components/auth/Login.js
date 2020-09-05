@@ -11,23 +11,26 @@ const Login = props => {
   const authContext = useContext(AuthContext);
   const alertContext = useContext(AlertContext);
 
+  const { isLogining, isAuthenticated, login, loadUser, msg, token } = authContext;
+
   const onChange = e => setUser({...user, [e.target.name]: e.target.value});
 
   const { email, password } = user;
 
   useEffect( ()=>
     {
-      if (authContext.isAuthenticated === false) {
-        alertContext.addAlert({msg:'Invalid Credential',bg:'bg-red-800'});
+      if (token) loadUser();
+      if (isLogining) {
+        alertContext.addAlert({msg: 'Loading...', bg: 'bg-gray-800', ms: 1000});
       }
-      else if (authContext.loading) {
-        alertContext.addAlert({msg: 'Loading user...', bg: 'bg-gray-800'});
+      else if (isAuthenticated === false) {
+        alertContext.addAlert({msg,bg:'bg-red-800', ms: 1000});
       }
-      else if (authContext.isAuthenticated === true) {
+      else if (isAuthenticated === true) {
         props.history.push('/');
       }
     }, 
-    [ authContext.loading, authContext.isAuthenticated ] 
+    [ isLogining, isAuthenticated, token ] 
   );
 
   const onSubmit = e => {
@@ -40,11 +43,11 @@ const Login = props => {
       <h1 className='text-4xl py-2 text-center'>Account <span className='text-green-900'>Login</span></h1>
       <div className='py-2'>
         <label htmlFor='email' className='py-2 block'>Email</label>
-        <input value={email} onChange={onChange} id='email' name='email' type='email' className='block w-full px-2 py-1 border rounded'/>
+        <input required value={email} onChange={onChange} id='email' name='email' type='email' className='block w-full px-2 py-1 border rounded'/>
       </div>
       <div className='py-2'>
         <label htmlFor='password' className='py-2 block'>Password</label>
-        <input value={password} onChange={onChange} id='password' name='password' type='text' className='block w-full px-2 py-1 border rounded'/>
+        <input required value={password} onChange={onChange} id='password' name='password' type='text' className='block w-full px-2 py-1 border rounded'/>
       </div>
       <div className='py-4'>
         <input type='submit' value='Login' className='block w-full px-2 py-1 rounded cursor-pointer bg-green-900 text-white'/>

@@ -3,7 +3,7 @@ import ContactContext from './contactContext';
 import ContactReducer from './contactReducer';
 import { v4 } from 'uuid';
 import {
-  ACTION_PRE,
+  CONTACT_ACTION_PRE,
   GET_CONTACTS,
   ADD_CONTACT,
   DELETE_CONTACT,
@@ -51,7 +51,7 @@ const ContactState = props => {
   const [ state, dispatch ] = useReducer(ContactReducer, initState);
 
   const getContacts = async ()=> {
-    dispatch({type: ACTION_PRE})   
+    dispatch({type: CONTACT_ACTION_PRE})   
     await sleep(3000);
     dispatch({type: GET_CONTACTS, payload: contacts});
   };
